@@ -33,7 +33,7 @@ export default function Hero() {
         </svg>
       </div>
 
-      <div className="mx-auto max-w-2xl py-20 text-center sm:py-32 lg:py-40">
+      <div className="mx-auto max-w-2xl py-8 text-center sm:py-32 lg:py-16">
         <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-gray-100">
           Earn Rewards for Sharing Your Insights
         </h1>
@@ -50,7 +50,7 @@ export default function Hero() {
             Get started
           </Link>
           <Link
-            href="/learn-more"
+            href="/about"
             className="text-sm leading-6 font-semibold text-gray-900 dark:text-gray-200"
           >
             Learn more <span aria-hidden="true">→</span>
