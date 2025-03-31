@@ -1,45 +1,49 @@
-'use client'
+"use client";
 
-import { useUser, SignOutButton } from '@clerk/nextjs'
-import { BsPersonFill } from 'react-icons/bs'
-import { IoLogOutOutline } from 'react-icons/io5'
-import { useRouter } from 'next/navigation'
-import { useState, useEffect, useRef } from 'react'
+import { useUser, SignOutButton } from "@clerk/nextjs";
+import { BsPersonFill } from "react-icons/bs";
+import { IoLogOutOutline } from "react-icons/io5";
+import { useRouter } from "next/navigation";
+import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 
 const User = () => {
-  const { user, isSignedIn } = useUser()
-  const router = useRouter()
-  const [dropdownOpen, setDropdownOpen] = useState(false)
-  const dropdownRef = useRef<HTMLDivElement>(null)
+  const { user, isSignedIn } = useUser();
+  const router = useRouter();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setDropdownOpen(false)
+        setDropdownOpen(false);
       }
     }
 
     if (dropdownOpen) {
-      document.addEventListener('mousedown', handleClickOutside)
+      document.addEventListener("mousedown", handleClickOutside);
     } else {
-      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener("mousedown", handleClickOutside);
     }
 
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [dropdownOpen])
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [dropdownOpen]);
 
   return (
     <div className="relative" ref={dropdownRef}>
       {isSignedIn && user?.imageUrl ? (
-        <img
-          src={user.imageUrl}
-          alt="User"
-          className="h-8 w-8 cursor-pointer rounded-full border border-gray-300 dark:border-gray-700"
-          onClick={() => setDropdownOpen(!dropdownOpen)}
-        />
+        <button onClick={() => setDropdownOpen(!dropdownOpen)} className="focus:outline-none">
+          <Image
+            src={user.imageUrl}
+            alt="User"
+            width={32}
+            height={32}
+            className="h-8 w-8 rounded-full border border-gray-300 dark:border-gray-700"
+          />
+        </button>
       ) : (
-        <button onClick={() => router.push('/login')}>
+        <button onClick={() => router.push("/login")}>
           <BsPersonFill className="hover:text-primary-500 dark:hover:text-primary-400 h-6 w-6 text-gray-900 dark:text-white" />
         </button>
       )}
@@ -62,7 +66,7 @@ const User = () => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default User
+export default User;
