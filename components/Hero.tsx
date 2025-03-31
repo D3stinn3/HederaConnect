@@ -1,8 +1,9 @@
 'use client'
+import React from 'react'
 
 export default function Hero() {
   return (
-    <div className="relative isolate px-6 pt-14 lg:px-8">
+    <div className="mx-auto max-w-2xl py-4 text-gray-900 sm:py-6 lg:py-8 dark:text-gray-100">
       <div className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
         <svg
           className="relative left-[calc(50%-11rem)] -z-10 h-[21.1875rem] max-w-none -translate-x-1/2 rotate-[30deg] sm:left-[calc(50%-30rem)] sm:h-[42.375rem]"
@@ -31,26 +32,25 @@ export default function Hero() {
         </svg>
       </div>
 
-      <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-            Build your next idea, faster.
-          </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
-            Create amazing applications quickly and efficiently with our powerful tools and
-            resources.
-          </p>
-          <div className="mt-10 flex items-center justify-center gap-x-6">
-            <a
-              href="#"
-              className="bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 rounded-md px-4 py-2 text-sm font-semibold text-white shadow-sm focus:ring-2 focus:ring-offset-2 focus:outline-none"
-            >
-              Get started
-            </a>
-            <a href="#" className="text-sm leading-6 font-semibold text-gray-900">
-              Learn more <span aria-hidden="true">→</span>
-            </a>
-          </div>
+      <div className="mx-auto max-w-2xl py-16 text-center sm:py-24 lg:py-28">
+        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
+          Earn Rewards for Sharing Your Insights
+        </h1>
+        <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          Contribute valuable blogs from various platforms and get rewarded in Hedera when your
+          content is unique and recognized.
+        </p>
+
+        <div className="mt-10 flex items-center justify-center gap-x-6">
+          <a
+            href="/blog"
+            className="bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 rounded-md px-4 py-2 text-sm font-semibold text-white shadow-sm focus:ring-2 focus:ring-offset-2 focus:outline-none"
+          >
+            Get started
+          </a>
+          <a href="#" className="text-sm leading-6 font-semibold text-gray-900 dark:text-gray-200">
+            Learn more <span aria-hidden="true">→</span>
+          </a>
         </div>
       </div>
 
