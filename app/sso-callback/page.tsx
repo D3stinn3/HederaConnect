@@ -1,10 +1,18 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useClerk } from '@clerk/nextjs'
 
 const SSOCallbackPage = () => {
+  return (
+    <Suspense fallback={<Loading />}>
+      <SSOCallbackContent />
+    </Suspense>
+  )
+}
+
+const SSOCallbackContent = () => {
   const { handleRedirectCallback } = useClerk()
   const router = useRouter()
   const searchParams = useSearchParams() // Get URL params
@@ -33,5 +41,12 @@ const SSOCallbackPage = () => {
     </div>
   )
 }
+
+// Loading fallback while Suspense is resolving
+const Loading = () => (
+  <div className="flex min-h-screen items-center justify-center bg-gray-100 dark:bg-gray-900">
+    <p className="text-gray-900 dark:text-white">Loading...</p>
+  </div>
+)
 
 export default SSOCallbackPage
