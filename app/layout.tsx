@@ -2,6 +2,15 @@ import 'css/tailwind.css'
 import 'pliny/search/algolia.css'
 import 'remark-github-blockquote-alert/alert.css'
 
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
+
 import { Space_Grotesk } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
@@ -62,6 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const basePath = process.env.BASE_PATH || ''
 
   return (
+    <ClerkProvider>
     <html
       lang={siteMetadata.language}
       className={`${space_grotesk.variable} scroll-smooth`}
@@ -107,5 +117,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </ThemeProviders>
       </body>
     </html>
+    </ClerkProvider>
   )
 }
