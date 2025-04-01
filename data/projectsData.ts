@@ -7,20 +7,18 @@ interface Project {
 
 const projectsData: Project[] = [
   {
-    title: 'A Search Engine',
-    description: `What if you could look up any information in the world? Webpages, images, videos
-    and more. Google has many features to help you find exactly what you're looking
-    for.`,
-    imgSrc: '/static/images/google.png',
-    href: 'https://www.google.com',
+    title: 'Social Media Content Aggregator',
+    description: `Our platform aggregates valuable content from various social media platforms into one place. 
+    It helps users find well-organized educational content, news, and discussions related to Hedera in one seamless hub.`,
+    imgSrc: '/static/images/socials.jpeg',
+    href: '#',
   },
   {
-    title: 'The Time Machine',
-    description: `Imagine being able to travel back in time or to the future. Simple turn the knob
-    to the desired date and press "Go". No more worrying about lost keys or
-    forgotten headphones with this simple yet affordable solution.`,
-    imgSrc: '/static/images/time-machine.jpg',
-    href: '/blog/the-time-machine',
+    title: 'Hedera AI Agent',
+    description: `An AI-powered assistant integrated with Hedera Connect, this agent helps guide users through the platform, 
+    answer queries, and assist with various tasks on the site, improving user experience and engagement.`,
+    imgSrc: '/static/images/hedera_logo.jpg',
+    href: '#',
   },
 ]
 
