@@ -89,7 +89,7 @@ const User = () => {
       )}
 
       {dropdownOpen && isSignedIn && (
-        <div className="absolute right-0 z-50 mt-2 w-48 rounded-lg border border-gray-200 bg-white py-2 shadow-lg dark:border-gray-700 dark:bg-gray-800">
+        <div className="ring-opacity-5 absolute right-0 z-50 mt-2 w-48 origin-top-right divide-gray-100 rounded-md bg-white ring-1 shadow-lg ring-black focus:outline-hidden dark:bg-gray-800">
           <Link
             href="/user"
             className="flex w-full items-center px-4 py-2 text-sm text-blue-600 hover:bg-gray-100 dark:text-blue-400 dark:hover:bg-gray-700"
