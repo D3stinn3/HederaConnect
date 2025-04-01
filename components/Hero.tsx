@@ -16,7 +16,7 @@ export default function Hero() {
 
         <div className="mt-10 flex items-center justify-center gap-x-6">
           <Link
-            href="/blog"
+            href="/rewards"
             className="bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 rounded-md px-4 py-2 text-sm font-semibold text-white shadow-sm focus:ring-2 focus:ring-offset-2 focus:outline-none"
           >
             Get started
