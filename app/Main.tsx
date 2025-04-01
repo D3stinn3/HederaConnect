@@ -1,4 +1,9 @@
-import Link from '@/components/Link'
+'use client'
+
+import { useState } from 'react'
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
@@ -8,6 +13,17 @@ import Hero from '@/components/Hero'
 const MAX_DISPLAY = 5
 
 export default function Home({ posts }) {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
+  }
+
   return (
     <>
       <Hero />
@@ -20,12 +36,12 @@ export default function Home({ posts }) {
             {siteMetadata.description}
           </p>
         </div>
-        <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-          {!posts.length && 'No posts found.'}
+        <div className="pd-4">
+        <Slider {...settings}>
           {posts.slice(0, MAX_DISPLAY).map((post) => {
             const { slug, date, title, summary, tags } = post
             return (
-              <li key={slug} className="py-12">
+              <div key={slug} className="py-12">
                 <article>
                   <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
                     <dl>
@@ -38,12 +54,9 @@ export default function Home({ posts }) {
                       <div className="space-y-6">
                         <div>
                           <h2 className="text-2xl leading-8 font-bold tracking-tight">
-                            <Link
-                              href={`/blog/${slug}`}
-                              className="text-gray-900 dark:text-gray-100"
-                            >
+                            <a href={`/blog/${slug}`} className="text-gray-900 dark:text-gray-100">
                               {title}
-                            </Link>
+                            </a>
                           </h2>
                           <div className="flex flex-wrap">
                             {tags.map((tag) => (
@@ -56,33 +69,23 @@ export default function Home({ posts }) {
                         </div>
                       </div>
                       <div className="text-base leading-6 font-medium">
-                        <Link
+                        <a
                           href={`/blog/${slug}`}
                           className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                           aria-label={`Read more: "${title}"`}
                         >
                           Read more &rarr;
-                        </Link>
+                        </a>
                       </div>
                     </div>
                   </div>
                 </article>
-              </li>
+              </div>
             )
           })}
-        </ul>
-      </div>
-      {posts.length > MAX_DISPLAY && (
-        <div className="flex justify-end text-base leading-6 font-medium">
-          <Link
-            href="/blog"
-            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-            aria-label="All posts"
-          >
-            All Posts &rarr;
-          </Link>
+        </Slider>
         </div>
-      )}
+      </div>
       {siteMetadata.newsletter?.provider && (
         <div className="flex items-center justify-center pt-4">
           <NewsletterForm />
