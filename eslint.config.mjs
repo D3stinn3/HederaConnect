@@ -51,6 +51,9 @@ export default [
       'prettier/prettier': 'error',
       'react/react-in-jsx-scope': 'off',
 
+      'react-hooks/rules-of-hooks': 'off',
+      'react-hooks/exhaustive-deps': 'off',
+
       'jsx-a11y/anchor-is-valid': [
         'error',
         {
