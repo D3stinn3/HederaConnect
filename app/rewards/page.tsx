@@ -37,6 +37,20 @@ const RewardsPage = () => {
     }
   }
 
+  // This useEffect runs only once to check wallet connection on initial load
+  useEffect(() => {
+    if (!walletConnected) {
+      handleConnectWallet()
+    }
+  }, [walletConnected])
+
+  // This useEffect runs after the component mounts to ensure we handle wallet connection
+  useEffect(() => {
+    if (!walletConnected) {
+      handleConnectWallet()
+    }
+  }, []) // Empty dependency array means this will only run on initial mount
+
   // Handle post submission
   const handlePost = () => {
     if (!articleLink.trim()) {
@@ -46,12 +60,6 @@ const RewardsPage = () => {
     alert(`Article posted: ${articleLink}`)
     setArticleLink('')
   }
-
-  useEffect(() => {
-    if (!walletConnected) {
-      handleConnectWallet()
-    }
-  }, [walletConnected])
 
   return (
     <div className="container mx-auto px-4 py-6">
