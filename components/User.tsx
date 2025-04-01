@@ -9,6 +9,7 @@ import { MdManageAccounts } from 'react-icons/md'
 import { useRouter } from 'next/navigation'
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const User = () => {
   const { user, isSignedIn } = useUser()
@@ -89,13 +90,13 @@ const User = () => {
 
       {dropdownOpen && isSignedIn && (
         <div className="absolute right-0 z-50 mt-2 w-48 rounded-lg border border-gray-200 bg-white py-2 shadow-lg dark:border-gray-700 dark:bg-gray-800">
-          <a
+          <Link
             href="/user"
             className="flex w-full items-center px-4 py-2 text-sm text-blue-600 hover:bg-gray-100 dark:text-blue-400 dark:hover:bg-gray-700"
           >
             <MdManageAccounts className="mr-2 h-5 w-5" />
             Manage Account
-          </a>
+          </Link>
 
           <button
             onClick={() => setShowWalletModal(true)}
