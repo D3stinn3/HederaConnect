@@ -11,6 +11,8 @@ import {
   UserButton,
 } from '@clerk/nextjs'
 
+import HederaAgent from '@/components/HederaAgent'
+
 import { Space_Grotesk } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
@@ -171,6 +173,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </SearchProvider>
               <Footer />
             </SectionContainer>
+            <HederaAgent />
           </ThemeProviders>
         </body>
       </html>
