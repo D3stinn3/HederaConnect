@@ -11,8 +11,9 @@ declare global {
 }
 
 export async function connectWallet() {
-  if (!window.ethereum) {
+  if (typeof window.ethereum === 'undefined') {
     console.error('MetaMask is not installed')
+    alert('MetaMask is not installed. Please install it to continue.')
     return null
   }
 
