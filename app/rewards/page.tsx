@@ -1,20 +1,43 @@
 'use client'
 
 import { useUser, RedirectToSignIn } from '@clerk/nextjs'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { connectWallet, getContract } from '@/utils/hederaContract'
 
 const RewardsPage = () => {
   const { user, isSignedIn } = useUser()
   const [articleLink, setArticleLink] = useState('')
-  const userTokens = 0 // Initialize user's earned Hedera tokens
-  const userWins = 0 // Initialize user's wins
+  const [userTokens, setUserTokens] = useState(0) // Track user's earned Hedera tokens
+  const [userWins, setUserWins] = useState(0) // Track user's wins
+  const [walletConnected, setWalletConnected] = useState(false)
 
   // Show Clerk's built-in sign-in page if not signed in
   if (!isSignedIn) {
     return <RedirectToSignIn />
   }
 
+  // Connect wallet and fetch user data (tokens, wins)
+  const handleConnectWallet = async () => {
+    const account = await connectWallet()
+    if (account) {
+      setWalletConnected(true)
+      const contract = await getContract()
+
+      try {
+        // Fetch user's HBAR tokens and wins (using contract methods)
+        const tokens = await contract.getUserTokens(account)
+        const wins = await contract.getUserWins(account)
+
+        setUserTokens(tokens.toString()) // Assuming the contract returns BigNumber
+        setUserWins(wins.toString()) // Assuming the contract returns BigNumber
+      } catch (error) {
+        console.error('Error fetching contract data', error)
+      }
+    }
+  }
+
+  // Handle post submission
   const handlePost = () => {
     if (!articleLink.trim()) {
       alert('Please enter a valid article link.')
@@ -24,9 +47,14 @@ const RewardsPage = () => {
     setArticleLink('')
   }
 
+  useEffect(() => {
+    if (!walletConnected) {
+      handleConnectWallet()
+    }
+  }, [walletConnected])
+
   return (
     <div className="container mx-auto px-4 py-6">
-      {/* Full-width card for posting links */}
       <div className="mx-auto mb-6 w-full rounded-lg border bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-900">
         <h2 className="text-lg font-semibold text-gray-800 dark:text-white">
           Share an Article or Blog Post
