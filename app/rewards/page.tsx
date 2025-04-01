@@ -42,14 +42,7 @@ const RewardsPage = () => {
     if (!walletConnected) {
       handleConnectWallet()
     }
-  }, [walletConnected])
-
-  // This useEffect runs after the component mounts to ensure we handle wallet connection
-  useEffect(() => {
-    if (!walletConnected) {
-      handleConnectWallet()
-    }
-  }, []) // Empty dependency array means this will only run on initial mount
+  }, [walletConnected]) // Add walletConnected as a dependency
 
   // Handle post submission
   const handlePost = () => {
