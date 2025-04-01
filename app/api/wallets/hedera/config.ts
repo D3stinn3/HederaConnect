@@ -1,1 +1,1 @@
-export const HEDERA_NETWORK = 'testnet'; // Change to 'mainnet' if needed
+export const HEDERA_NETWORK = 'testnet' // Change to 'mainnet' if needed
