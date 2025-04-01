@@ -3,7 +3,7 @@ const siteMetadata = {
   title: 'HC',
   author: 'BBS',
   headerTitle: 'Hedera_Connect',
-  description: 'A blog created with Next.js and Tailwind.css',
+  description: 'Latest shared Insights on hedera from different social media platforms.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
