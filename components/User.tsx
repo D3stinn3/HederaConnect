@@ -73,7 +73,11 @@ const User = () => {
   return (
     <div className="relative" ref={dropdownRef}>
       {isSignedIn && user?.imageUrl ? (
-        <button onClick={() => setDropdownOpen(!dropdownOpen)} className="focus:outline-none">
+        <button
+          onClick={() => setDropdownOpen(!dropdownOpen)}
+          className="focus:outline-none"
+          aria-label="User menu"
+        >
           <Image
             src={user.imageUrl}
             alt="User"
@@ -83,7 +87,7 @@ const User = () => {
           />
         </button>
       ) : (
-        <button onClick={() => router.push('/login')}>
+        <button onClick={() => router.push('/login')} aria-label="Go to login">
           <BsPersonFill className="hover:text-primary-500 dark:hover:text-primary-400 h-6 w-6 text-gray-900 dark:text-white" />
         </button>
       )}
@@ -101,6 +105,7 @@ const User = () => {
           <button
             onClick={() => setShowWalletModal(true)}
             className="flex w-full items-center px-4 py-2 text-sm text-blue-600 hover:bg-gray-100 dark:text-blue-400 dark:hover:bg-gray-700"
+            aria-label="Connect wallet"
           >
             <BsWallet2 className="mr-2 h-5 w-5" />
             Connect Wallet
@@ -108,7 +113,10 @@ const User = () => {
 
           <hr className="border-gray-200 dark:border-gray-600" />
           <SignOutButton>
-            <button className="flex w-full items-center px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:text-red-400 dark:hover:bg-gray-700">
+            <button
+              className="flex w-full items-center px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:text-red-400 dark:hover:bg-gray-700"
+              aria-label="Logout"
+            >
               <IoLogOutOutline className="mr-2 h-5 w-5" />
               Logout
             </button>
@@ -121,42 +129,58 @@ const User = () => {
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-gray-300/30 backdrop-blur-sm dark:bg-gray-900/30"
           onClick={() => setShowWalletModal(false)}
+          role="dialog"
+          aria-labelledby="connect-wallet-title"
         >
           <div
             className="w-96 rounded-lg bg-white p-6 shadow-lg dark:bg-gray-900"
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 className="text-lg font-semibold text-gray-800 dark:text-white">
+            <h2
+              id="connect-wallet-title"
+              className="text-lg font-semibold text-gray-800 dark:text-white"
+            >
               Connect Hedera Wallet
             </h2>
 
             <div className="mt-4">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label
+                htmlFor="account-id"
+                className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
                 Account ID
               </label>
               <input
+                id="account-id"
                 type="text"
                 value={accountId}
                 onChange={(e) => setAccountId(e.target.value)}
                 className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 focus:ring focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                aria-describedby="account-id-description"
               />
             </div>
 
             <div className="mt-4">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label
+                htmlFor="private-key"
+                className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
                 Private Key
               </label>
               <div className="relative">
                 <input
+                  id="private-key"
                   type={showPrivateKey ? 'text' : 'password'}
                   value={privateKey}
                   onChange={(e) => setPrivateKey(e.target.value)}
                   className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 focus:ring focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                  aria-describedby="private-key-description"
                 />
                 <button
                   type="button"
                   className="absolute top-2 right-3 text-gray-500 dark:text-gray-400"
                   onClick={() => setShowPrivateKey(!showPrivateKey)}
+                  aria-label="Toggle private key visibility"
                 >
                   {showPrivateKey ? (
                     <FiEyeOff className="h-5 w-5" />
