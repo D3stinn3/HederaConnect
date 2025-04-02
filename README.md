@@ -2,8 +2,8 @@
 
 # Hedera Connect
 
-[![GitHub Repo stars](https://img.shields.io/github/stars/timlrx/tailwind-nextjs-starter-blog?style=social)](https://github.com/D3stinn3/Blog.git/stargazers/)
-[![GitHub forks](https://img.shields.io/github/forks/timlrx/tailwind-nextjs-starter-blog?style=social)](https://github.com/D3stinn3/Blog.git/forks)
+[![GitHub Repo stars](https://img.shields.io/github/stars/D3stinn3/Blog?style=social)](https://github.com/D3stinn3/Blog.git/stargazers/)
+[![GitHub forks](https://img.shields.io/github/forks/D3stinn3/Blog?style=social)](https://github.com/D3stinn3/Blog.git/forks)
 
 [![Deployed to Vercel](https://hederaconnect.vercel.app/)]
 
