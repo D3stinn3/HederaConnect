@@ -33,7 +33,7 @@ const HederaAgent = () => {
           onClick={handleOutsideClick} // Close on outside click
         >
           <div className="w-96 rounded-lg bg-white p-6 shadow-lg dark:bg-gray-800">
-            <h2 className="mb-4 text-xl font-bold text-gray-800 dark:text-white">AI Chat</h2>
+            <h2 className="mb-4 text-xl font-bold text-gray-800 dark:text-white">HederaAgent Chat</h2>
             <div className="mb-4 border-b border-gray-300 dark:border-gray-600">
               <p className="text-center text-gray-500 dark:text-gray-400">In Development</p>
             </div>
